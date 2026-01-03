@@ -1,8 +1,8 @@
 # Import python packages
 import streamlit as st
-import requests
-import pandas as pd
 from snowflake.snowpark.functions import col
+from snowflake.snowpark import Session
+
 
 # Write directly to the app
 st.title(f":cup_with_straw: Customize your smoothie :cup_with_straw:")
@@ -10,8 +10,20 @@ st.write(
   """Choose the fruits you want in your smoothie!
   """
 )
-cnx=st.connection('snowflake')
-session = cnx.session()
+
+# Establish a connection
+connection_parameters = {
+    "account" : "CUVHUHC-NWB40835",
+    "user" : "mm66sffb",
+    "password" : "SnowflakeLearn!966",
+    "role" : "SYSADMIN",
+    "warehouse" : "COMPUTE_WH",
+    "database" : "SMOOTHEIS",
+    "schema" : "PUBLIC",
+    "client_session_keep_alive" : True    
+}
+
+session = Session.builder.configs(connection_parameters).create()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 name_on_order=st.text_input('Name on order:')
