@@ -13,9 +13,9 @@ st.write(
 
 # Establish a connection
 connection_parameters = {
-    "account" : "CUVHUHC-NWB40835",
-    "user" : "mm66sffb",
-    "password" : "SnowflakeLearn!966",
+    "account" : "*****",
+    "user" : "****",
+    "password" : "******",
     "role" : "SYSADMIN",
     "warehouse" : "COMPUTE_WH",
     "database" : "SMOOTHEIS",
